@@ -1,8 +1,10 @@
-import Image from "next/image";
+"use client";
+
 import { Card } from "@repo/ui/card";
 import { Code } from "@repo/ui/code";
+import Image from "next/image";
+import { triggerHelloWorldTask } from "./actions";
 import styles from "./page.module.css";
-import { Button } from "@repo/ui/button";
 
 function Gradient({
   conic,
@@ -78,9 +80,15 @@ export default function Page(): JSX.Element {
         </div>
       </div>
 
-      <Button appName="web" className={styles.button}>
+      <button
+        className={styles.button}
+        onClick={async () => {
+          const handle = await triggerHelloWorldTask();
+          console.log(handle);
+        }}
+      >
         Click me!
-      </Button>
+      </button>
 
       <div className={styles.hero}>
         <div className={styles.heroContent}>

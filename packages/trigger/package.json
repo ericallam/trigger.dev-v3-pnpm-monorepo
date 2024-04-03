@@ -1,0 +1,26 @@
+{
+  "name": "@repo/trigger",
+  "version": "0.0.0",
+  "private": true,
+  "exports": {
+    "./example": "./src/example.ts"
+  },
+  "dependencies": {
+    "@trigger.dev/sdk": "0.0.0-v3-pnpm-fix-20240403154252",
+    "assert-never": "^1.2.1",
+    "@dagrejs/dagre": "^1.1.1"
+  },
+  "scripts": {
+    "dev": "trigger.dev dev"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "@turbo/gen": "^1.12.4",
+    "@types/node": "^20.11.24",
+    "@types/eslint": "^8.56.5",
+    "eslint": "^8.57.0",
+    "typescript": "^5.3.3",
+    "trigger.dev": "0.0.0-v3-pnpm-fix-20240403154252"
+  }
+}

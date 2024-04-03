@@ -1,3 +1,62 @@
+# trigger.dev v3 pnpm monorepo
+
+Things to note:
+
+- The trigger.dev code lives in the packages/trigger directory, a private package
+- The `apps/web` Next.js app has a workspace dependency on `@repo/trigger`
+- The `apps/web` Next.js app triggers the example hello world task in `app/actions` which is a server action
+- The page.tsx is marked as a client component
+- The TRIGGER_SECRET_KEY must be set in the `.env.local` in `apps/web`
+- You'll need to set a project reference in the `packages/trigger/trigger.config.ts` file
+- The `@trigger.dev/sdk` and `trigger.dev` packages are installed using a prerelease snapshot `0.0.0-v3-pnpm-fix-20240403154252`
+- I've installed the `trigger.dev` package as a dev dep of `packages/trigger` and created a `dev` script so you should be able to run `pnpm run dev --filter @repo/trigger` from the monorepo root or just `pnpm run dev` from the `packages/trigger` dir
+- In your Next.js logs, you might see a bunch of errors like below, which I'm working on fixing now (but the triggering works fine)
+
+```
+web:dev: ../../node_modules/.pnpm/@opentelemetry+instrumentation@0.49.1_@opentelemetry+api@1.8.0_supports-color@9.4.0/node_modules/@opentelemetry/instrumentation/build/esm/platform/index.js
+web:dev: ../../node_modules/.pnpm/@opentelemetry+instrumentation@0.49.1_@opentelemetry+api@1.8.0_supports-color@9.4.0/node_modules/@opentelemetry/instrumentation/build/esm/index.js
+web:dev: ../../node_modules/.pnpm/@trigger.dev+core@0.0.0-v3-pnpm-fix-20240403154252_supports-color@9.4.0/node_modules/@trigger.dev/core/dist/v3/index.mjs
+web:dev: ../../node_modules/.pnpm/@trigger.dev+sdk@0.0.0-v3-pnpm-fix-20240403154252/node_modules/@trigger.dev/sdk/dist/v3/index.mjs
+web:dev: ../../packages/trigger/src/example.ts
+web:dev: ./app/actions.ts
+web:dev:
+web:dev: ../../node_modules/.pnpm/debug@4.3.4_supports-color@9.4.0/node_modules/debug/src/node.js
+web:dev: Module not found: ESM packages (supports-color) need to be imported. Use 'import' to reference the package instead. https://nextjs.org/docs/messages/import-esm-externals
+web:dev:
+web:dev: Import trace for requested module:
+web:dev: ../../node_modules/.pnpm/debug@4.3.4_supports-color@9.4.0/node_modules/debug/src/node.js
+web:dev: ../../node_modules/.pnpm/debug@4.3.4_supports-color@9.4.0/node_modules/debug/src/index.js
+web:dev: ../../node_modules/.pnpm/socket.io-client@4.7.5_supports-color@9.4.0/node_modules/socket.io-client/build/esm-debug/index.js
+web:dev: ../../node_modules/.pnpm/@trigger.dev+core@0.0.0-v3-pnpm-fix-20240403154252_supports-color@9.4.0/node_modules/@trigger.dev/core/dist/v3/index.mjs
+web:dev: ../../node_modules/.pnpm/@trigger.dev+sdk@0.0.0-v3-pnpm-fix-20240403154252/node_modules/@trigger.dev/sdk/dist/v3/index.mjs
+web:dev: ../../packages/trigger/src/example.ts
+web:dev: ./app/actions.ts
+web:dev:  ⚠ ../../node_modules/.pnpm/@opentelemetry+instrumentation@0.49.1_@opentelemetry+api@1.8.0_supports-color@9.4.0/node_modules/@opentelemetry/instrumentation/build/esm/platform/node/instrumentation.js
+web:dev: Critical dependency: the request of a dependency is an expression
+web:dev:
+web:dev: Import trace for requested module:
+web:dev: ../../node_modules/.pnpm/@opentelemetry+instrumentation@0.49.1_@opentelemetry+api@1.8.0_supports-color@9.4.0/node_modules/@opentelemetry/instrumentation/build/esm/platform/node/instrumentation.js
+web:dev: ../../node_modules/.pnpm/@opentelemetry+instrumentation@0.49.1_@opentelemetry+api@1.8.0_supports-color@9.4.0/node_modules/@opentelemetry/instrumentation/build/esm/platform/node/index.js
+web:dev: ../../node_modules/.pnpm/@opentelemetry+instrumentation@0.49.1_@opentelemetry+api@1.8.0_supports-color@9.4.0/node_modules/@opentelemetry/instrumentation/build/esm/platform/index.js
+web:dev: ../../node_modules/.pnpm/@opentelemetry+instrumentation@0.49.1_@opentelemetry+api@1.8.0_supports-color@9.4.0/node_modules/@opentelemetry/instrumentation/build/esm/index.js
+web:dev: ../../node_modules/.pnpm/@trigger.dev+core@0.0.0-v3-pnpm-fix-20240403154252_supports-color@9.4.0/node_modules/@trigger.dev/core/dist/v3/index.mjs
+web:dev: ../../node_modules/.pnpm/@trigger.dev+sdk@0.0.0-v3-pnpm-fix-20240403154252/node_modules/@trigger.dev/sdk/dist/v3/index.mjs
+web:dev: ../../packages/trigger/src/example.ts
+web:dev: ./app/actions.ts
+web:dev:
+web:dev: ../../node_modules/.pnpm/debug@4.3.4_supports-color@9.4.0/node_modules/debug/src/node.js
+web:dev: Module not found: ESM packages (supports-color) need to be imported. Use 'import' to reference the package instead. https://nextjs.org/docs/messages/import-esm-externals
+web:dev:
+web:dev: Import trace for requested module:
+web:dev: ../../node_modules/.pnpm/debug@4.3.4_supports-color@9.4.0/node_modules/debug/src/node.js
+web:dev: ../../node_modules/.pnpm/debug@4.3.4_supports-color@9.4.0/node_modules/debug/src/index.js
+web:dev: ../../node_modules/.pnpm/socket.io-client@4.7.5_supports-color@9.4.0/node_modules/socket.io-client/build/esm-debug/index.js
+web:dev: ../../node_modules/.pnpm/@trigger.dev+core@0.0.0-v3-pnpm-fix-20240403154252_supports-color@9.4.0/node_modules/@trigger.dev/core/dist/v3/index.mjs
+web:dev: ../../node_modules/.pnpm/@trigger.dev+sdk@0.0.0-v3-pnpm-fix-20240403154252/node_modules/@trigger.dev/sdk/dist/v3/index.mjs
+web:dev: ../../packages/trigger/src/example.ts
+web:dev: ./app/actions.ts
+```
+
 # Turborepo starter
 
 This is an official starter Turborepo.
@@ -49,33 +108,3 @@ To develop all apps and packages, run the following command:
 cd my-turborepo
 pnpm dev
 ```
-
-### Remote Caching
-
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
-
-```
-cd my-turborepo
-npx turbo login
-```
-
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-```
-npx turbo link
-```
-
-## Useful Links
-
-Learn more about the power of Turborepo:
-
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
