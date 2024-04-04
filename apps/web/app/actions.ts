@@ -1,6 +1,6 @@
 "use server";
 
-import { helloWorldTask } from "@repo/trigger/example";
+import { helloWorldTask } from "../trigger/example";
 
 export async function triggerHelloWorldTask() {
   try {

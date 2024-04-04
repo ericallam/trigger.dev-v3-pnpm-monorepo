@@ -28,7 +28,7 @@ importers:
         version: link:../../packages/ui
       next:
         specifier: ^14.1.1
-        version: 14.1.1(react-dom@18.2.0)(react@18.2.0)
+        version: 14.1.1(@opentelemetry/api@1.8.0)(react-dom@18.2.0)(react@18.2.0)
       react:
         specifier: ^18.2.0
         version: 18.2.0
@@ -66,15 +66,18 @@ importers:
 
   apps/web:
     dependencies:
-      '@repo/trigger':
+      '@repo/dsl':
         specifier: workspace:*
-        version: link:../../packages/trigger
+        version: link:../../packages/dsl
       '@repo/ui':
         specifier: workspace:*
         version: link:../../packages/ui
+      '@trigger.dev/sdk':
+        specifier: 0.0.0-v3-pnpm-fix-20240403154252
+        version: 0.0.0-v3-pnpm-fix-20240403154252
       next:
         specifier: ^14.1.1
-        version: 14.1.1(react-dom@18.2.0)(react@18.2.0)
+        version: 14.1.1(@opentelemetry/api@1.8.0)(react-dom@18.2.0)(react@18.2.0)
       react:
         specifier: ^18.2.0
         version: 18.2.0
@@ -106,6 +109,9 @@ importers:
       eslint:
         specifier: ^8.57.0
         version: 8.57.0
+      trigger.dev:
+        specifier: 0.0.0-v3-pnpm-fix-20240403154252
+        version: 0.0.0-v3-pnpm-fix-20240403154252(@types/react@18.2.61)
       typescript:
         specifier: ^5.3.3
         version: 5.3.3
@@ -161,40 +167,6 @@ importers:
       eslint-plugin-only-warn:
         specifier: ^1.1.0
         version: 1.1.0
-      typescript:
-        specifier: ^5.3.3
-        version: 5.3.3
-
-  packages/trigger:
-    dependencies:
-      '@repo/dsl':
-        specifier: workspace:*
-        version: link:../dsl
-      '@trigger.dev/sdk':
-        specifier: 0.0.0-v3-pnpm-fix-20240403154252
-        version: 0.0.0-v3-pnpm-fix-20240403154252
-    devDependencies:
-      '@repo/eslint-config':
-        specifier: workspace:*
-        version: link:../eslint-config
-      '@repo/typescript-config':
-        specifier: workspace:*
-        version: link:../typescript-config
-      '@turbo/gen':
-        specifier: ^1.12.4
-        version: 1.12.4(@types/node@20.11.24)(typescript@5.3.3)
-      '@types/eslint':
-        specifier: ^8.56.5
-        version: 8.56.5
-      '@types/node':
-        specifier: ^20.11.24
-        version: 20.11.24
-      eslint:
-        specifier: ^8.57.0
-        version: 8.57.0
-      trigger.dev:
-        specifier: 0.0.0-v3-pnpm-fix-20240403154252
-        version: 0.0.0-v3-pnpm-fix-20240403154252
       typescript:
         specifier: ^5.3.3
         version: 5.3.3
@@ -4789,7 +4761,7 @@ packages:
     engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
     dev: true
 
-  /ink@4.4.1(react@18.2.0):
+  /ink@4.4.1(@types/react@18.2.61)(react@18.2.0):
     resolution: {integrity: sha512-rXckvqPBB0Krifk5rn/5LvQGmyXwCUpBfmTwbkQNBY9JY8RSl3b8OftBNEYxg4+SWUhEKcPifgope28uL9inlA==}
     engines: {node: '>=14.16'}
     peerDependencies:
@@ -4803,6 +4775,7 @@ packages:
         optional: true
     dependencies:
       '@alcalzone/ansi-tokenize': 0.1.3
+      '@types/react': 18.2.61
       ansi-escapes: 6.2.1
       auto-bind: 5.0.1
       chalk: 5.3.0
@@ -5739,7 +5712,7 @@ packages:
     engines: {node: '>= 0.4.0'}
     dev: true
 
-  /next@14.1.1(react-dom@18.2.0)(react@18.2.0):
+  /next@14.1.1(@opentelemetry/api@1.8.0)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-McrGJqlGSHeaz2yTRPkEucxQKe5Zq7uPwyeHNmJaZNY4wx9E9QdxmTp310agFRoMuIYgQrCrT3petg13fSVOww==}
     engines: {node: '>=18.17.0'}
     hasBin: true
@@ -5755,6 +5728,7 @@ packages:
         optional: true
     dependencies:
       '@next/env': 14.1.1
+      '@opentelemetry/api': 1.8.0
       '@swc/helpers': 0.5.2
       busboy: 1.6.0
       caniuse-lite: 1.0.30001593
@@ -7494,7 +7468,7 @@ packages:
       is-number: 7.0.0
     dev: true
 
-  /trigger.dev@0.0.0-v3-pnpm-fix-20240403154252:
+  /trigger.dev@0.0.0-v3-pnpm-fix-20240403154252(@types/react@18.2.61):
     resolution: {integrity: sha512-bGevnj48M+sRLRxlIu0I03ODDiNxRZ5AoZzgKGZmjxhai3ZyBa+wGeTxb5COcv9e1q6ZhUSsZFtiUcZD5PedQQ==}
     engines: {node: '>=18.0.0'}
     hasBin: true
@@ -7528,7 +7502,7 @@ packages:
       glob: 10.3.10
       gradient-string: 2.0.2
       import-meta-resolve: 4.0.0
-      ink: 4.4.1(react@18.2.0)
+      ink: 4.4.1(@types/react@18.2.61)(react@18.2.0)
       jsonc-parser: 3.2.1
       jsonlines: 0.1.1
       liquidjs: 10.10.2

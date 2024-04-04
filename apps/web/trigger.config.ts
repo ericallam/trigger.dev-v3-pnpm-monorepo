@@ -13,6 +13,6 @@ export const config: TriggerConfig = {
       randomize: true,
     },
   },
-  triggerDirectories: ["./src"],
+  triggerDirectories: ["./trigger"],
   dependenciesToBundle: ["@repo/dsl"],
 };
