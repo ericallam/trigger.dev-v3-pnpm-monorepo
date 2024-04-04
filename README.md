@@ -10,6 +10,7 @@ Things to note:
 - You'll need to set a project reference in the `packages/trigger/trigger.config.ts` file
 - The `@trigger.dev/sdk` and `trigger.dev` packages are installed using a prerelease snapshot `0.0.0-v3-pnpm-fix-20240403154252`
 - I've installed the `trigger.dev` package as a dev dep of `packages/trigger` and created a `dev` script so you should be able to run `pnpm run dev --filter @repo/trigger` from the monorepo root or just `pnpm run dev` from the `packages/trigger` dir
+- The `@repo/trigger` folder uses another package, `@repo/dsl`, and that has been added to the `dependenciesToBundle` option
 - In your Next.js logs, you might see a bunch of errors like below, which I'm working on fixing now (but the triggering works fine)
 
 ```
