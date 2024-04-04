@@ -1,0 +1,21 @@
+{
+  "name": "@repo/backend",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "assert-never": "^1.2.1",
+    "@dagrejs/dagre": "^1.1.1"
+  },
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "@turbo/gen": "^1.12.4",
+    "@types/node": "^20.11.24",
+    "@types/eslint": "^8.56.5",
+    "eslint": "^8.57.0",
+    "typescript": "^5.3.3"
+  }
+}

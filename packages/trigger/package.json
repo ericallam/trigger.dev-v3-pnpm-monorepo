@@ -6,8 +6,9 @@
     "./example": "./src/example.ts"
   },
   "dependencies": {
-    "@trigger.dev/sdk": "0.0.0-v3-pnpm-fix-20240403154252",
-    "@repo/dsl": "workspace:*"
+    "@trigger.dev/sdk": "0.0.0-v3-pnpm-fix-20240404124258",
+    "@repo/dsl": "workspace:*",
+    "@repo/backend": "workspace:*"
   },
   "scripts": {
     "dev": "trigger.dev dev"
@@ -20,6 +21,6 @@
     "@types/eslint": "^8.56.5",
     "eslint": "^8.57.0",
     "typescript": "^5.3.3",
-    "trigger.dev": "0.0.0-v3-pnpm-fix-20240403154252"
+    "trigger.dev": "0.0.0-v3-pnpm-fix-20240404124258"
   }
 }
