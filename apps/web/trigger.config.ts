@@ -14,5 +14,5 @@ export const config: TriggerConfig = {
     },
   },
   triggerDirectories: ["./trigger"],
-  dependenciesToBundle: ["@repo/dsl"],
+  dependenciesToBundle: [/@repo\/dsl/],
 };

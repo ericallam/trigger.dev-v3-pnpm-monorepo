@@ -7,7 +7,8 @@
     "@dagrejs/dagre": "^1.1.1"
   },
   "exports": {
-    ".": "./src/index.ts"
+    ".": "./src/index.ts",
+    "./foo/bar": "./src/foo/bar.ts"
   },
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
