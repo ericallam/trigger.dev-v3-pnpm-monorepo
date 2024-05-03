@@ -30,7 +30,7 @@ export function createGraph() {
   g.setEdge("hford", "lwilson");
   g.setEdge("lwilson", "kbacon");
 
-  return g;
+  return dagre.graphlib.json.write(g);
 }
 
 export function callAssertNever() {

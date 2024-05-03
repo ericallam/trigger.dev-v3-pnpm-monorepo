@@ -1,13 +1,11 @@
 "use server";
 
-import { helloWorldTask } from "@repo/trigger/example";
+import { createGraphTask } from "@repo/trigger/example";
 
 export async function triggerHelloWorldTask() {
   try {
-    const handle = await helloWorldTask.trigger({
-      payload: {
-        foo: "bar",
-      },
+    const handle = await createGraphTask.trigger({
+      numberOfGraphs: 3,
     });
 
     return { handle };

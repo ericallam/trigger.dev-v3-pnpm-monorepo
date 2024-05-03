@@ -6,12 +6,12 @@
     "./example": "./src/example.ts"
   },
   "dependencies": {
-    "@trigger.dev/sdk": "0.0.0-v3-pnpm-fix-20240404124258",
+    "@trigger.dev/sdk": "3.0.0-beta.26",
     "@repo/dsl": "workspace:*",
     "@repo/backend": "workspace:*"
   },
   "scripts": {
-    "dev": "trigger.dev dev"
+    "dev": "triggerdev dev"
   },
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
@@ -21,6 +21,6 @@
     "@types/eslint": "^8.56.5",
     "eslint": "^8.57.0",
     "typescript": "^5.3.3",
-    "trigger.dev": "0.0.0-v3-pnpm-fix-20240404124258"
+    "trigger.dev": "3.0.0-beta.26"
   }
 }

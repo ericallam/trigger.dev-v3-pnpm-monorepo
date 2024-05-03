@@ -7,56 +7,9 @@ Things to note:
 - The `apps/web` Next.js app triggers the example hello world task in `app/actions` which is a server action
 - The page.tsx is marked as a client component
 - The TRIGGER_SECRET_KEY must be set in the `.env.local` in `apps/web`
-- You'll need to set a project reference in the `packages/trigger/trigger.config.ts` file
-- The `@trigger.dev/sdk` and `trigger.dev` packages are installed using a prerelease snapshot `0.0.0-v3-pnpm-fix-20240403154252`
+- You'll need to set a project reference in the `packages/trigger/trigger.config.ts` file, which you can find in your Trigger.dev dashboard
 - I've installed the `trigger.dev` package as a dev dep of `packages/trigger` and created a `dev` script so you should be able to run `pnpm run dev --filter @repo/trigger` from the monorepo root or just `pnpm run dev` from the `packages/trigger` dir
-- The `@repo/trigger` folder uses another package, `@repo/dsl`, and that has been added to the `dependenciesToBundle` option
-- In your Next.js logs, you might see a bunch of errors like below, which I'm working on fixing now (but the triggering works fine)
-
-```
-web:dev: ../../node_modules/.pnpm/@opentelemetry+instrumentation@0.49.1_@opentelemetry+api@1.8.0_supports-color@9.4.0/node_modules/@opentelemetry/instrumentation/build/esm/platform/index.js
-web:dev: ../../node_modules/.pnpm/@opentelemetry+instrumentation@0.49.1_@opentelemetry+api@1.8.0_supports-color@9.4.0/node_modules/@opentelemetry/instrumentation/build/esm/index.js
-web:dev: ../../node_modules/.pnpm/@trigger.dev+core@0.0.0-v3-pnpm-fix-20240403154252_supports-color@9.4.0/node_modules/@trigger.dev/core/dist/v3/index.mjs
-web:dev: ../../node_modules/.pnpm/@trigger.dev+sdk@0.0.0-v3-pnpm-fix-20240403154252/node_modules/@trigger.dev/sdk/dist/v3/index.mjs
-web:dev: ../../packages/trigger/src/example.ts
-web:dev: ./app/actions.ts
-web:dev:
-web:dev: ../../node_modules/.pnpm/debug@4.3.4_supports-color@9.4.0/node_modules/debug/src/node.js
-web:dev: Module not found: ESM packages (supports-color) need to be imported. Use 'import' to reference the package instead. https://nextjs.org/docs/messages/import-esm-externals
-web:dev:
-web:dev: Import trace for requested module:
-web:dev: ../../node_modules/.pnpm/debug@4.3.4_supports-color@9.4.0/node_modules/debug/src/node.js
-web:dev: ../../node_modules/.pnpm/debug@4.3.4_supports-color@9.4.0/node_modules/debug/src/index.js
-web:dev: ../../node_modules/.pnpm/socket.io-client@4.7.5_supports-color@9.4.0/node_modules/socket.io-client/build/esm-debug/index.js
-web:dev: ../../node_modules/.pnpm/@trigger.dev+core@0.0.0-v3-pnpm-fix-20240403154252_supports-color@9.4.0/node_modules/@trigger.dev/core/dist/v3/index.mjs
-web:dev: ../../node_modules/.pnpm/@trigger.dev+sdk@0.0.0-v3-pnpm-fix-20240403154252/node_modules/@trigger.dev/sdk/dist/v3/index.mjs
-web:dev: ../../packages/trigger/src/example.ts
-web:dev: ./app/actions.ts
-web:dev:  ⚠ ../../node_modules/.pnpm/@opentelemetry+instrumentation@0.49.1_@opentelemetry+api@1.8.0_supports-color@9.4.0/node_modules/@opentelemetry/instrumentation/build/esm/platform/node/instrumentation.js
-web:dev: Critical dependency: the request of a dependency is an expression
-web:dev:
-web:dev: Import trace for requested module:
-web:dev: ../../node_modules/.pnpm/@opentelemetry+instrumentation@0.49.1_@opentelemetry+api@1.8.0_supports-color@9.4.0/node_modules/@opentelemetry/instrumentation/build/esm/platform/node/instrumentation.js
-web:dev: ../../node_modules/.pnpm/@opentelemetry+instrumentation@0.49.1_@opentelemetry+api@1.8.0_supports-color@9.4.0/node_modules/@opentelemetry/instrumentation/build/esm/platform/node/index.js
-web:dev: ../../node_modules/.pnpm/@opentelemetry+instrumentation@0.49.1_@opentelemetry+api@1.8.0_supports-color@9.4.0/node_modules/@opentelemetry/instrumentation/build/esm/platform/index.js
-web:dev: ../../node_modules/.pnpm/@opentelemetry+instrumentation@0.49.1_@opentelemetry+api@1.8.0_supports-color@9.4.0/node_modules/@opentelemetry/instrumentation/build/esm/index.js
-web:dev: ../../node_modules/.pnpm/@trigger.dev+core@0.0.0-v3-pnpm-fix-20240403154252_supports-color@9.4.0/node_modules/@trigger.dev/core/dist/v3/index.mjs
-web:dev: ../../node_modules/.pnpm/@trigger.dev+sdk@0.0.0-v3-pnpm-fix-20240403154252/node_modules/@trigger.dev/sdk/dist/v3/index.mjs
-web:dev: ../../packages/trigger/src/example.ts
-web:dev: ./app/actions.ts
-web:dev:
-web:dev: ../../node_modules/.pnpm/debug@4.3.4_supports-color@9.4.0/node_modules/debug/src/node.js
-web:dev: Module not found: ESM packages (supports-color) need to be imported. Use 'import' to reference the package instead. https://nextjs.org/docs/messages/import-esm-externals
-web:dev:
-web:dev: Import trace for requested module:
-web:dev: ../../node_modules/.pnpm/debug@4.3.4_supports-color@9.4.0/node_modules/debug/src/node.js
-web:dev: ../../node_modules/.pnpm/debug@4.3.4_supports-color@9.4.0/node_modules/debug/src/index.js
-web:dev: ../../node_modules/.pnpm/socket.io-client@4.7.5_supports-color@9.4.0/node_modules/socket.io-client/build/esm-debug/index.js
-web:dev: ../../node_modules/.pnpm/@trigger.dev+core@0.0.0-v3-pnpm-fix-20240403154252_supports-color@9.4.0/node_modules/@trigger.dev/core/dist/v3/index.mjs
-web:dev: ../../node_modules/.pnpm/@trigger.dev+sdk@0.0.0-v3-pnpm-fix-20240403154252/node_modules/@trigger.dev/sdk/dist/v3/index.mjs
-web:dev: ../../packages/trigger/src/example.ts
-web:dev: ./app/actions.ts
-```
+- The `@repo/trigger` folder uses another package, `@repo/dsl`, and that has been added to the `dependenciesToBundle` option, since it's a workspace package
 
 # Turborepo starter
 

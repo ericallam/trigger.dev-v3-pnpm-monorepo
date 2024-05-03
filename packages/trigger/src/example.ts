@@ -1,16 +1,19 @@
 import { logger, task, wait } from "@trigger.dev/sdk/v3";
-import { createGraph, callAssertNever } from "@repo/dsl";
+import { createGraph } from "@repo/dsl";
 
-export const helloWorldTask = task({
-  id: "hello-world",
-  run: async (payload: any, { ctx }) => {
-    logger.log("Hello, world!", { payload, ctx });
+export const createGraphTask = task({
+  id: "create-graph",
+  run: async (payload: { numberOfGraphs: number }, { ctx }) => {
+    logger.log("Creating some great graphs!", { payload, ctx });
 
     await wait.for({ seconds: 5 });
 
-    // Create a new directed graph
-    var g = createGraph();
+    const graphs: Array<ReturnType<typeof createGraph>> = [];
 
-    callAssertNever();
+    for (let i = 0; i < payload.numberOfGraphs; i++) {
+      graphs.push(createGraph());
+    }
+
+    return { graphs };
   },
 });
